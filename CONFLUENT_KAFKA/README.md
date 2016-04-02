@@ -10,3 +10,4 @@ kafka_connect_port: 28083
 
 ### 
 JMX Port : 29394
+Http metric report Port: 24043 ( instead of 24042 ) 

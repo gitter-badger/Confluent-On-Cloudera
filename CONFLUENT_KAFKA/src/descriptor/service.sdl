@@ -478,7 +478,7 @@
           "label": "HTTP Metric Report Port",
           "description": "Port the HTTP metric reporter listens on.",
           "type": "port",
-          "default": 24042
+          "default": 24043
         },
         {
           "name": "broker_max_heap_size",
