@@ -50,7 +50,13 @@ Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Mana
   <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/success.png" width="400"/></a>
 </p>
 
+The main new capabilities are:
 
+* Start and stop services from CM ( with auditing )
+* Manage deployments ( scale up and down )
+* Monitoring / Health checks
+* Reporting and performance metrics 
+* Easy Access to log files
 
 
 
