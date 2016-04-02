@@ -71,4 +71,4 @@ export KAFKA_HEAP_OPTS="-Xmx1G"
 export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # And finally run Kafka itself
-exec $CONFLUENT_KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties
+exec $CONFLUENT_KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties -Xloggc:C:\whereever\jvm.log /var/log/confluent/kafka/server.log

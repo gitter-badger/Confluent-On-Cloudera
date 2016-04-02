@@ -11,3 +11,11 @@ kafka_connect_port: 28083
 ### 
 JMX Port : 29394
 Http metric report Port: 24043 ( instead of 24042 ) 
+
+## CSS custimisations
+
+vim /usr/share/cmf/webapp/static/cms/css/cms.css
+
+INSERT
+
+.label-service-confluentkafka{background-color:#f1b75d;color:#333}
