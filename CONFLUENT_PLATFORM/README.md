@@ -36,7 +36,7 @@ On local machine:
 
     git clone https://github.com/Landoop/CSDS.git
     mvn install
-    scp CONFLUENT_KAFKA/target/Confluent-Platform-2.0.1.jar landoop@cloudera.landoop.com:
+    scp CONFLUENT_PLATFORM/target/Confluent-Platform-2.0.1.jar landoop@cloudera.landoop.com:
 
 On cloudera.landoop.com
 
