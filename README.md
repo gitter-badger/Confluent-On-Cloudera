@@ -23,6 +23,10 @@ service cloudera-scm-server restart
 Stay happy knowing that this is a quick and easy operation that usually requires 2 to 3 seconds.
 We are not stopping anything on cluster or monitoring, just reloading a web app here. 
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/confluent.png" width="260"/></a>
+</p>
+
 Log-in and click on the top-right actions icon and `Add a Service`:
 
 <p align="center">
