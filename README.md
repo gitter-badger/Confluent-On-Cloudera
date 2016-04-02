@@ -1,6 +1,6 @@
 # CSDs for Cloudera Manager 
 
-A collection of Custom Service Descriptors.
+A collection of Custom Service Descriptors
 
 __Build requires:__  Maven 3
 

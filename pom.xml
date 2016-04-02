@@ -10,7 +10,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>CONFLUENT_PLATFORM</module>
+    <module>ConfluentPlatform</module>
   </modules>
 
   <properties>
