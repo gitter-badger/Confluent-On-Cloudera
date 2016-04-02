@@ -306,7 +306,7 @@
       },
       "logging": {
         "dir": "/var/log/confluent/kafka",
-        "filename": "kafkaServer-gc.log",
+        "filename": "server.log",
         "modifiable": true,
         "configName": "kafka.log4j.dir",
         "loggingType": "log4j"
