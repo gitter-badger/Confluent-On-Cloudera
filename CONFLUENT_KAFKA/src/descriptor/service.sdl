@@ -291,7 +291,7 @@
         "broker.id"
       ],
       "startRunner": {
-        "program": "scripts/control.sh",
+        "program": "scripts/confluent-kafka-server.sh",
         "args": [
           "start"
         ],
