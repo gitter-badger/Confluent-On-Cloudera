@@ -26,15 +26,20 @@ We are not stopping anything on cluster or monitoring, just reloading a web app 
 Log-in and click on the top-right actions icon and `Add a Service`:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Landoop/CSD/master/images/AddCustomServiceDescriptor.png" width="400"/></a>
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/AddCustomServiceDescriptor.png" width="400"/></a>
 </p>
 
 Select the new option `Confluent Platform` and continue:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Landoop/CSD/master/images/SelectConfluentPlatform.png" width="700"/></a>
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/SelectConfluentPlatform.png" width="700"/></a>
 </p>
 
+In the following image you need to select the `hosts` where each of the service will be installed:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/SelectRolesAndHosts.png" width="700"/></a>
+</p>
 
 
 
