@@ -62,6 +62,10 @@ The main new capabilities are:
 
 ---
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/AllConfluentServices.png" width="500"/></a>
+</p>
+
 
 
 [Apache-License](LICENSE.txt)
