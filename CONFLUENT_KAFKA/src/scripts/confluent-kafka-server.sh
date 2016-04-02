@@ -58,7 +58,7 @@ fi
 export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:$CONF_DIR/log4j.properties"
 
 # Set LOG_DIR to pwd as this directory exists and hence the underlaying run-kafka-class.sh won't try to create a new directory inside the parcel
-export LOG_DIR=`pwd`
+export LOG_DIR=/var/log/confluent/kafka
 
 # Set heap size
 #export KAFKA_HEAP_OPTS="-Xmx${BROKER_HEAP_SIZE}M"
@@ -71,4 +71,4 @@ export KAFKA_HEAP_OPTS="-Xmx1G"
 export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # And finally run Kafka itself
-exec $CONFLUENT_KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties -Xloggc:C:\whereever\jvm.log /var/log/confluent/kafka/server.log
+exec $CONFLUENT_KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties

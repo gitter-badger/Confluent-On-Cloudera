@@ -18,4 +18,13 @@ vim /usr/share/cmf/webapp/static/cms/css/cms.css
 
 INSERT
 
-.label-service-confluentkafka{background-color:#f1b75d;color:#333}
+.label-service-confluentkafka{background-color:#FF8400;color:#333}
+
+##
+
+// vim /opt/confluent-2.0.1/bin/kafka-run-class
+// GC_FILE_SUFFIX='.log'
+  
+//vim /opt/confluent-2.0.1/bin/kafka-server-start
+//EXTRA_ARGS="-name server -loggc"
+  
