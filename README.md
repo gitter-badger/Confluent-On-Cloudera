@@ -41,6 +41,12 @@ In the following image you need to select the `hosts` where each of the service 
   <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/SelectRolesAndHosts.png" width="700"/></a>
 </p>
 
+Success (!) we have the `Confluent Platform 2.0.1` managed through Cloudera Manager
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/success.png" width="400"/></a>
+</p>
+
 
 
 
