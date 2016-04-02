@@ -20,7 +20,7 @@ chown cloudera-scm.cloudera-scm /opt/cloudera/csd/*
 service cloudera-scm-server restart
 ```
 
-Stay happy knowing that this is a quick and easy operation that usually requires 2 to 3 seconds.
+Stay happy knowing that this is a quick and easy operation that usually requires 3 to 4 seconds.
 We are not stopping anything on cluster or monitoring, just reloading a web app here. 
 
 <p align="center">
@@ -67,9 +67,11 @@ The main new capabilities are:
 ---
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/AllConfluentServices.png" width="500"/></a>
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/AllConfluentServices.png" width="300"/></a>
 </p>
 
+JXM is used for health-checks and a rich set of metrics are collected from the brokers.
+Logs are also available through Cloudera Manager
 
 
 [Apache-License](LICENSE.txt)
