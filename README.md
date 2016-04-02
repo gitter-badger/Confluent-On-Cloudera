@@ -1,27 +1,38 @@
-Cloudera Manager CSDs
-=======
+# CSDs for Cloudera Manager 
 
 A collection of Custom Service Descriptors.
 
-Requirements
-------------
+## Requirements
 
  * Maven 3 (to build)
 
 ## Building the CSDs
 
-The CSDs can be build by running:
-
 ```bash
 $ mvn install
 ```
 
-The CSD itself is a jar file located under the target
-directory of each CSD. For Spark, the CSD is located:
+The CSDs are generated under the /target/ folder of each module
+
+## Installing CSDs
+
+To install the generated CSDs copy them over into `/opt/cloudera/csd/` at the server with Cloudera Manager,
+set the ownership and restart the service:
 
 ```bash
-$ ls SPARK/target/SPARK-1.0-SNAPSHOT.jar
+chown cloudera-scm.cloudera-scm /opt/cloudera/csd/*
+service cloudera-scm-server restart
 ```
 
-All source in this repository is [Apache-Licensed](LICENSE.txt).
+Stay happy knowing that this is a quick and easy operation that usually required 2-3 seconds.
+We are not stopping anything on cluster or monitoring, just reloading a web app here.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/master/images/AddCustomServiceDescriptor.png" width="300"/></a>
+</p>
+
+
+
+
+[Apache-Licensed](LICENSE.txt).
 
