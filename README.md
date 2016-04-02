@@ -2,9 +2,7 @@
 
 A collection of Custom Service Descriptors.
 
-### Build
-
-__Requires:__  Maven 3
+__Build requires:__  Maven 3
 
 ```bash
 $ mvn install

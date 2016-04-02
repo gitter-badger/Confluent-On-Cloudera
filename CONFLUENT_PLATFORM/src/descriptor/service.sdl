@@ -260,6 +260,53 @@
   ],
   "roles": [
     {
+      "name": "CONFLUENT_ZOOKEEPER",
+      "label": "Confluent Zookeeper",
+      "pluralLabel": "Confluent Zookeepers",
+      "startRunner": {
+        "program": "scripts/confluent-zookeeper.sh",
+        "args": [
+          "start"
+        ],
+        "environmentVariables": {
+          "CHROOT": "${zookeeper.chroot}",
+          "JMX_PORT": "${jmx_port}",
+          "ENABLE_MONITORING": "${monitoring.enabled}",
+          "METRIC_REPORTERS": "${kafka.metrics.reporters}"
+        }
+      },
+      "logging": {
+        "dir": "/var/log/confluent/zookeeper",
+        "filename": "zookeeper.log",
+        "modifiable": true,
+        "configName": "kafka.log4j.dir",
+        "loggingType": "log4j"
+      },
+      "parameters": [
+        {
+          "name": "zk.id",
+          "label": "Zookeeper ID",
+          "description": "ID uniquely identifying each broker. Never set this property at the group level; it should always be overridden on instance level.",
+          "type": "string"
+        },
+        {
+          "name": "port",
+          "label": "TCP Port",
+          "description": "Zookeeper broker port.",
+          "type": "port",
+          "default": 22181,
+          "configurableInWizard": true
+        },
+        {
+          "name": "jmx_port",
+          "label": "JMX Port",
+          "description": "Port for JMX.",
+          "type": "port",
+          "default": 9011
+        }
+      ]
+    },
+    {
       "name": "CONFLUENT_SERVER",
       "label": "Confluent Kafka Broker",
       "pluralLabel": "Confluent Kafka Brokers",

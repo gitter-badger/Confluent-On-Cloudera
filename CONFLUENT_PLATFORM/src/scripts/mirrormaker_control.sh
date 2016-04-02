@@ -62,8 +62,7 @@ if [[ -n ${QUEUE_BYTE_SIZE} ]]; then
     QUEUE_BYTE_SIZE_PARAM="--queue.byte.size ${QUEUE_BYTE_SIZE}"
 fi
 
-# Propoagating logger information to Kafka
-export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:$CONF_DIR/log4j.properties"
+export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file://$CONF_DIR/log4j.properties"
 
 # Set LOG_DIR to pwd as this directory exists and hence the underlaying run-kafka-class.sh won't try to create a new directory inside the parcel
 export LOG_DIR=`pwd`
