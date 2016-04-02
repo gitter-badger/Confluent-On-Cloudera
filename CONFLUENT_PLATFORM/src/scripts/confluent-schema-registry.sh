@@ -44,7 +44,7 @@ mkdir -p $LOG_DIR
 
 export JMX_PORT=24044
 
-export SCHEMA_REGISTRY_LOG4J_OPTS="-Dlog4j.configuration=file:///opt//opt/log4j_schema_registry.properties"
+export SCHEMA_REGISTRY_LOG4J_OPTS="-Dlog4j.configuration=file:///opt/log4j_schema_registry.properties"
 
 # Run [ schema-registry ]
 exec $CONFLUENT_HOME/bin/schema-registry-start $CONFLUENT_HOME/etc/schema-registry/schema-registry.properties
