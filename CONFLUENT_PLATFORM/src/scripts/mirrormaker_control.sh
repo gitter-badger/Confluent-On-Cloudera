@@ -1,24 +1,6 @@
-#!/bin/bash
-##
-# Licensed to Cloudera, Inc. under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  Cloudera, Inc. licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+#!/usr/bin/env bash -x -e
 
-# for debugging
-set -x
+CONFLUENT_HOME=/opt/confluent-2.0.1
 
 # For better debugging
 echo ""
@@ -26,7 +8,7 @@ echo "Date: `date`"
 echo "Host: `hostname -f`"
 echo "Pwd: `pwd`"
 echo "CONF_DIR: $CONF_DIR"
-echo "KAFKA_HOME: $KAFKA_HOME"
+echo "CONFLUENT HOME: $CONFLUENT_HOME"
 echo "Zoookeper Quorum: $ZK_QUORUM"
 echo "Chroot: $CHROOT"
 echo "no.data.loss: ${NO_DATA_LOSS}"
@@ -87,4 +69,4 @@ export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:$CONF_DIR/log4j.properties"
 export LOG_DIR=`pwd`
 
 # And finally run Kafka MirrorMaker itself
-exec $KAFKA_HOME/bin/kafka-mirror-maker.sh --new.producer ${WL_TOPICS} ${BL_TOPICS} ${DATA_LOSS_PARAM} ${PRODUCER_PARAM} ${STREAM_PARAM} ${QUEUE_SIZE_PARAM} ${QUEUE_BYTE_SIZE_PARAM} --consumer.config $CONF_DIR/mirror_maker_consumers.properties --producer.config $CONF_DIR/mirror_maker_producers.properties
+exec $CONFLUENT_HOME/bin/kafka-mirror-maker.sh --new.producer ${WL_TOPICS} ${BL_TOPICS} ${DATA_LOSS_PARAM} ${PRODUCER_PARAM} ${STREAM_PARAM} ${QUEUE_SIZE_PARAM} ${QUEUE_BYTE_SIZE_PARAM} --consumer.config $CONFLUENT_HOME/etc/mirror_maker_consumers.properties --producer.config $CONF_DIR/mirror_maker_producers.properties
