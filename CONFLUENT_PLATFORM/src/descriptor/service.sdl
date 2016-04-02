@@ -479,10 +479,10 @@
     },
     {
       "name": "CONFLUENT_REST_PROXY",
-      "label": "Confluent REST Proxy",
-      "pluralLabel": "Confluent REST Proxies",
+      "label": "Kafka Rest Proxy",
+      "pluralLabel": "Kafka REST Proxies",
       "startRunner": {
-        "program": "scripts/confluent-rest-proxy.sh",
+        "program": "scripts/confluent-kafka-rest-proxy.sh",
         "args": [
           "start"
         ],
@@ -603,8 +603,8 @@
     },
     {
       "name": "CONFLUENT_SCHEMA_REGISTRY",
-      "label": "Confluent Schema Registry",
-      "pluralLabel": "Confluent Schema Registries",
+      "label": "Schema Registry",
+      "pluralLabel": "Schema Registries",
       "startRunner": {
         "program": "scripts/confluent-schema-registry.sh",
         "args": [
