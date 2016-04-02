@@ -7,10 +7,6 @@ eclipse-classes
 # Gradle
 build
 
-# Python compiled files
-*.pyc
-*.pyo
-
 # vim artifacts
 .*.swp
 .*.swo
