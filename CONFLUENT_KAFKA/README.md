@@ -48,3 +48,11 @@ On cloudera.landoop.com
     service cloudera-scm-server restart
 
     Add Service `Confluent Platform` in CM
+    
+    
+    
+/opt/confluent-2.0.1/etc/kafka/server.properties
+    
+    kafka.http.metrics.host=0.0.0.0           # This would log into Cloudera?
+    kafka.http.metrics.port=24043             # This would log into Cloudera?
+    kafka.log4j.dir=/var/log/confluent/kafka  # This would log into Cloudera?

@@ -59,7 +59,7 @@ fi
 
 # Override with custom formatting rules
 # TODO: This should be pushed upstream to Confluent team
-export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:/opt/log4j.properties"
+export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:///opt/log4j.properties"
 
 # Set LOG_DIR to pwd as this directory exists and hence the underlaying run-kafka-class.sh won't try to create a new directory inside the parcel
 export LOG_DIR=/var/log/confluent/kafka
