@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -x -e
+#!/bin/env bash -x -e
 
 CONFLUENT_HOME=/opt/confluent-2.0.1
 

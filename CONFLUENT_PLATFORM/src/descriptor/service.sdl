@@ -320,6 +320,14 @@
           "type": "string"
         },
         {
+          "name": "port",
+          "label": "TCP Port",
+          "description": "Kafka broker port.",
+          "type": "port",
+          "default": 29092,
+          "configurableInWizard": true
+        },
+        {
           "name": "advertised.host.name",
           "label": "Advertised Host",
           "description": "If set, this is the hostname given out to producers, consumers, and other brokers to use in establishing connections. Never set this property at the group level; it should always be overriden on instance level.",
@@ -330,14 +338,6 @@
           "label": "Advertised Port",
           "description": "The port to give out to producers, consumers, and other brokers to use in establishing connections. This only needs to be set if this port is different from the port the server should bind to.",
           "type": "port"
-        },
-        {
-          "name": "port",
-          "label": "TCP Port",
-          "description": "Kafka broker port.",
-          "type": "port",
-          "default": 29092,
-          "configurableInWizard": true
         },
         {
           "name": "jmx_port",
