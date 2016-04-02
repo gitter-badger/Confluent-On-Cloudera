@@ -498,8 +498,8 @@
         }
       },
       "logging": {
-        "dir": "/var/log/kafka",
-        "filename": "mirrormaker.log",
+        "dir": "/var/log/confluent/rest-proxy",
+        "filename": "proxy.log",
         "modifiable": true,
         "configName": "kafka_mirrormaker.log4j.dir",
         "loggingType": "log4j"
@@ -622,8 +622,8 @@
         }
       },
       "logging": {
-        "dir": "/var/log/kafka",
-        "filename": "mirrormaker.log",
+        "dir": "/var/log/confluent/schema-registry",
+        "filename": "registry.log",
         "modifiable": true,
         "configName": "kafka_mirrormaker.log4j.dir",
         "loggingType": "log4j"

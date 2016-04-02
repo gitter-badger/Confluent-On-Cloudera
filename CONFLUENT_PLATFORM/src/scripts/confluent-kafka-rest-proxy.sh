@@ -44,5 +44,7 @@ mkdir -p $LOG_DIR
 
 export JMX_PORT=24045
 
+export KAFKAREST_LOG4J_OPTS="-Dlog4j.configuration=file:///opt/log4j_rest_proxy.properties"
+
 # Run [ kafka-rest ]
 exec $CONFLUENT_HOME/bin/kafka-rest-start $CONFLUENT_HOME/etc/kafka-rest/kafka-rest.properties

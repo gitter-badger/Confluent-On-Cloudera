@@ -36,13 +36,13 @@ export KAFKA_HEAP_OPTS="-Xmx1G"
 export LOG_DIR=/var/log/confluent/kafka
 mkdir -p $LOG_DIR
 
+# Set Kafka jvm opts
+export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
+
 # Override with custom formatting rules
 # TODO: This should be pushed upstream to Confluent team
 # export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:$CONF_DIR/log4j.properties"
 export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:///opt/log4j_kafka_server.properties"
-
-# Set Kafka jvm opts
-export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # Run [ kafka-broker ]
 exec $CONFLUENT_HOME/bin/kafka-server-start $CONFLUENT_HOME/etc/kafka/server.properties
