@@ -21,7 +21,7 @@
 set -x
 
 CONFLUENT_HOME=/opt/confluent-2.0.1
-CONF_DIR=/opt/confluent-2.0.1/etc/kafka
+#CONF_DIR=/opt/confluent-2.0.1/etc/kafka
 
 # For better debugging
 echo ""
@@ -75,4 +75,4 @@ export KAFKA_HEAP_OPTS="-Xmx1G"
 export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # And finally run Kafka itself
-exec $CONFLUENT_HOME/bin/kafka-server-start $CONF_DIR/server.properties
+exec $CONFLUENT_HOME/bin/kafka-server-start $CONFLUENT_HOME/etc/kafka/server.properties

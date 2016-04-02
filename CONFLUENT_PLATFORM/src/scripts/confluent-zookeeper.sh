@@ -21,7 +21,7 @@
 set -x
 
 CONFLUENT_HOME=/opt/confluent-2.0.1
-CONF_DIR=/opt/confluent-2.0.1/etc/kafka
+#CONF_DIR=/opt/confluent-2.0.1/etc/kafka
 
 # For better debugging
 echo ""
@@ -74,4 +74,4 @@ export LOG_DIR=/var/log/confluent/zookeeper
 export JMX_PORT=9011
 
 # And finally run Zookeeper itself
-exec $CONFLUENT_HOME/bin/zookeeper-server-start $CONF_DIR/zookeeper.properties
+exec $CONFLUENT_HOME/bin/zookeeper-server-start $CONFLUENT_HOME/etc/kafka/zookeeper.properties

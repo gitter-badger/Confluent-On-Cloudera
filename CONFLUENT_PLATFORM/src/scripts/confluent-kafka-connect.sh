@@ -54,4 +54,4 @@ echo "BROKER_HEAP_SIZE: ${BROKER_HEAP_SIZE}"
 #export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # And finally run Kafka itself
-#exec $KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties
+#exec $CONFLUENT_HOME/bin/kafka-server-start $CONFLUENT_HOME/etc/server.properties

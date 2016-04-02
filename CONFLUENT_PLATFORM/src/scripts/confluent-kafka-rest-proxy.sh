@@ -21,7 +21,7 @@
 set -x
 
 CONFLUENT_HOME=/opt/confluent-2.0.1
-CONF_DIR=/opt/confluent-2.0.1/etc
+#CONF_DIR=/opt/confluent-2.0.1/etc
 
 # For better debugging
 echo ""
@@ -71,4 +71,4 @@ echo "BROKER_HEAP_SIZE: ${BROKER_HEAP_SIZE}"
 #export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # And finally run Kafka itself
-exec CONFLUENT_HOME/bin/kafka-rest-start $CONF_DIR/kafka-rest/kafka-rest.properties
+exec $CONFLUENT_HOME/bin/kafka-rest-start $CONFLUENT_HOME/etc/kafka-rest/kafka-rest.properties
