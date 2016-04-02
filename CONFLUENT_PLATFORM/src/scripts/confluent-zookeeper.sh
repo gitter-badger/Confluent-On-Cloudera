@@ -20,7 +20,7 @@
 # for debugging
 set -x
 
-CONFLUENT_ZOOKEEPER_HOME=/opt/confluent-2.0.1
+CONFLUENT_HOME=/opt/confluent-2.0.1
 CONF_DIR=/opt/confluent-2.0.1/etc/kafka
 
 # For better debugging
@@ -29,7 +29,7 @@ echo "Date: `date`"
 echo "Host: `hostname -f`"
 echo "Pwd: `pwd`"
 echo "CONF_DIR: $CONF_DIR"
-echo "KAFKA_HOME: $KAFKA_HOME"
+echo "CONFLUENT HOME: $CONFLUENT_HOME"
 echo "Zoookeper Quorum: $ZK_QUORUM"
 echo "Chroot: $CHROOT"
 echo "JMX_PORT: $JMX_PORT"
@@ -56,9 +56,10 @@ echo "BROKER_HEAP_SIZE: ${BROKER_HEAP_SIZE}"
 
 # Propoagating logger information to Kafka
 #export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:$CONF_DIR/log4j.properties"
+export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:///opt/log4j_zookeeper.properties"
 
 # Set LOG_DIR to pwd as this directory exists and hence the underlaying run-kafka-class.sh won't try to create a new directory inside the parcel
-#export LOG_DIR=`pwd`
+export LOG_DIR=/var/log/confluent/zookeeper
 
 # Set heap size
 #export KAFKA_HEAP_OPTS="-Xmx${BROKER_HEAP_SIZE}M"
@@ -70,5 +71,7 @@ echo "BROKER_HEAP_SIZE: ${BROKER_HEAP_SIZE}"
 # Set java opts
 #export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
-# And finally run Kafka itself
-#exec $KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties
+export JMX_PORT=9011
+
+# And finally run Zookeeper itself
+exec $CONFLUENT_HOME/bin/zookeeper-server-start $CONF_DIR/zookeeper.properties

@@ -20,7 +20,7 @@
 # for debugging
 set -x
 
-CONFLUENT_KAFKA_HOME=/opt/confluent-2.0.1
+CONFLUENT_HOME=/opt/confluent-2.0.1
 CONF_DIR=/opt/confluent-2.0.1/etc/kafka
 
 # For better debugging
@@ -29,7 +29,7 @@ echo "Date: `date`"
 echo "Host: `hostname -f`"
 echo "Pwd: `pwd`"
 echo "CONF_DIR: $CONF_DIR"
-echo "CONFLUENT KAFKA_HOME: $CONFLUENT_KAFKA_HOME"
+echo "CONFLUENT HOME: $CONFLUENT_HOME"
 echo "Zoookeper Quorum: $ZK_QUORUM"
 echo "Chroot: $CHROOT"
 echo "JMX_PORT: $JMX_PORT"
@@ -59,7 +59,7 @@ fi
 
 # Override with custom formatting rules
 # TODO: This should be pushed upstream to Confluent team
-export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:///opt/log4j.properties"
+export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:///opt/log4j_kafka_server.properties"
 
 # Set LOG_DIR to pwd as this directory exists and hence the underlaying run-kafka-class.sh won't try to create a new directory inside the parcel
 export LOG_DIR=/var/log/confluent/kafka
@@ -75,4 +75,4 @@ export KAFKA_HEAP_OPTS="-Xmx1G"
 export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # And finally run Kafka itself
-exec $CONFLUENT_KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties
+exec $CONFLUENT_HOME/bin/kafka-server-start $CONF_DIR/server.properties

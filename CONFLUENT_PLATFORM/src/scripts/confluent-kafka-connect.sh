@@ -3,8 +3,8 @@
 # for debugging
 set -x
 
-CONFLUENT_ZOOKEEPER_HOME=/opt/confluent-2.0.1
-CONF_DIR=/opt/confluent-2.0.1/etc/kafka
+CONFLUENT_HOME=/opt/confluent-2.0.1
+CONF_DIR=/opt/confluent-2.0.1/etc
 
 # For better debugging
 echo ""

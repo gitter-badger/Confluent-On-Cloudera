@@ -1,18 +1,3 @@
-// Licensed to Cloudera, Inc. under one
-// or more contributor license agreements.  See the NOTICE file
-// distributed with this work for additional information
-// regarding copyright ownership.  Cloudera, Inc. licenses this file
-// to you under the Apache License, Version 2.0 (the
-// "License"); you may not use this file except in compliance
-// with the License.  You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 {
   "name": "CONFLUENTKAFKA",
   "label": "Confluent Platform",
@@ -32,17 +17,8 @@
   "icon": "images/confluent.png",
   "parcel": {
     "repoUrl": "https://archive.cloudera.com/kafka/parcels/latest/",
-    "requiredTags": [
-      "cdh",
-      "kafka"
-    ]
+    "requiredTags": [ "cdh" ]
   },
-  "serviceDependencies": [
-    {
-      "name": "ZOOKEEPER",
-      "required": "true"
-    }
-  ],
   "parameters": [
     {
       "name": "zookeeper.chroot",
@@ -284,7 +260,7 @@
   ],
   "roles": [
     {
-      "name": "CONFLUENTKAFKA_BROKER",
+      "name": "CONFLUENT_SERVER",
       "label": "Confluent Kafka Broker",
       "pluralLabel": "Confluent Kafka Brokers",
       "uniqueIdParameters": [
@@ -498,6 +474,378 @@
           "description": "These arguments are passed as part of the Java command line. Commonly, garbage collection flags or extra debugging flags are passed here.",
           "type": "string",
           "default": "-server -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:+CMSScavengeBeforeRemark -XX:+DisableExplicitGC -Djava.awt.headless=true"
+        }
+      ]
+    },
+    {
+      "name": "CONFLUENT_REST_PROXY",
+      "label": "Confluent REST Proxy",
+      "pluralLabel": "Confluent REST Proxies",
+      "startRunner": {
+        "program": "scripts/confluent-rest-proxy.sh",
+        "args": [
+          "start"
+        ],
+        "environmentVariables": {
+          "NO_DATA_LOSS": "${no.data.loss}",
+          "WHITELIST": "${whitelist}",
+          "BLACKLIST": "${blacklist}",
+          "NUM_PRODUCERS": "${num.producers}",
+          "NUM_STREAMS": "${num.streams}",
+          "QUEUE_SIZE": "${queue.size}",
+          "QUEUE_BYTE_SIZE": "${queue.byte.size}",
+          "JMX_PORT": "${jmx_port}"
+        }
+      },
+      "logging": {
+        "dir": "/var/log/kafka",
+        "filename": "mirrormaker.log",
+        "modifiable": true,
+        "configName": "kafka_mirrormaker.log4j.dir",
+        "loggingType": "log4j"
+      },
+      "topology": {
+        "minInstances": "0"
+      },
+      "configWriter": {
+        "generators": [
+          {
+            "filename": "mirror_maker_producers.properties",
+            "configFormat": "properties",
+            "includedParams": [
+              "bootstrap.servers"
+            ]
+          },
+          {
+            "filename": "mirror_maker_consumers.properties",
+            "configFormat": "properties",
+            "includedParams": [
+              "group.id"
+            ]
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "group.id",
+          "label": "Consumer Group ID",
+          "description": "Name of the consumer group used by MirrorMaker. When multiple role instances are configured with the same topics and same group ID, the role instances load-balance replication for the topics. When multiple role instances are configured with the same topics but different group ID, each role instance replicates all the events for those topics - this can be used to replicate the source cluster into multiple destination clusters.",
+          "type": "string",
+          "default": "cloudera_mirrormaker"
+        },
+        {
+          "name": "bootstrap.servers",
+          "label": "Destination Broker List",
+          "description": "List of brokers on destination cluster. This should be more than one, for high availability, but there's no need to list all brokers.",
+          "type": "string"
+        },
+        {
+          "name": "no.data.loss",
+          "label": "Avoid Data Loss",
+          "description": "Run with MirrorMaker settings that eliminate potential loss of data. This impacts performance, but is highly recommended.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "whitelist",
+          "label": "Topic Whitelist",
+          "description": "Regular expression that represents a set of topics to mirror. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "blacklist",
+          "label": "Topic Blacklist",
+          "description": "Regular expression that represents a set of topics to avoid mirroring. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "num.producers",
+          "label": "Number of Producers",
+          "description": "Number of producer instances.",
+          "type": "long",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "num.streams",
+          "label": "Number of Consumer Threads",
+          "description": "Number of consumer threads.",
+          "type": "long",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "queue.size",
+          "label": "Message Queue Size",
+          "description": "Number of messages that are buffered between producer and consumer.",
+          "type": "long",
+          "default": 10000,
+          "min": 1
+        },
+        {
+          "name": "queue.byte.size",
+          "label": "Queue Size",
+          "description": "Maximum number of bytes that can be buffered between producer and consumer.",
+          "type": "long",
+          "default": 100000000,
+          "unit": "bytes"
+        },
+        {
+          "name": "jmx_port",
+          "label": "JMX Port",
+          "description": "Port for JMX.",
+          "type": "port",
+          "default": 29394
+        }
+      ]
+    },
+    {
+      "name": "CONFLUENT_SCHEMA_REGISTRY",
+      "label": "Confluent Schema Registry",
+      "pluralLabel": "Confluent Schema Registries",
+      "startRunner": {
+        "program": "scripts/confluent-schema-registry.sh",
+        "args": [
+          "start"
+        ],
+        "environmentVariables": {
+          "NO_DATA_LOSS": "${no.data.loss}",
+          "WHITELIST": "${whitelist}",
+          "BLACKLIST": "${blacklist}",
+          "NUM_PRODUCERS": "${num.producers}",
+          "NUM_STREAMS": "${num.streams}",
+          "QUEUE_SIZE": "${queue.size}",
+          "QUEUE_BYTE_SIZE": "${queue.byte.size}",
+          "JMX_PORT": "${jmx_port}"
+        }
+      },
+      "logging": {
+        "dir": "/var/log/kafka",
+        "filename": "mirrormaker.log",
+        "modifiable": true,
+        "configName": "kafka_mirrormaker.log4j.dir",
+        "loggingType": "log4j"
+      },
+      "topology": {
+        "minInstances": "0"
+      },
+      "configWriter": {
+        "generators": [
+          {
+            "filename": "mirror_maker_producers.properties",
+            "configFormat": "properties",
+            "includedParams": [
+              "bootstrap.servers"
+            ]
+          },
+          {
+            "filename": "mirror_maker_consumers.properties",
+            "configFormat": "properties",
+            "includedParams": [
+              "group.id"
+            ]
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "group.id",
+          "label": "Consumer Group ID",
+          "description": "Name of the consumer group used by MirrorMaker. When multiple role instances are configured with the same topics and same group ID, the role instances load-balance replication for the topics. When multiple role instances are configured with the same topics but different group ID, each role instance replicates all the events for those topics - this can be used to replicate the source cluster into multiple destination clusters.",
+          "type": "string",
+          "default": "cloudera_mirrormaker"
+        },
+        {
+          "name": "bootstrap.servers",
+          "label": "Destination Broker List",
+          "description": "List of brokers on destination cluster. This should be more than one, for high availability, but there's no need to list all brokers.",
+          "type": "string"
+        },
+        {
+          "name": "no.data.loss",
+          "label": "Avoid Data Loss",
+          "description": "Run with MirrorMaker settings that eliminate potential loss of data. This impacts performance, but is highly recommended.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "whitelist",
+          "label": "Topic Whitelist",
+          "description": "Regular expression that represents a set of topics to mirror. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "blacklist",
+          "label": "Topic Blacklist",
+          "description": "Regular expression that represents a set of topics to avoid mirroring. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "num.producers",
+          "label": "Number of Producers",
+          "description": "Number of producer instances.",
+          "type": "long",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "num.streams",
+          "label": "Number of Consumer Threads",
+          "description": "Number of consumer threads.",
+          "type": "long",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "queue.size",
+          "label": "Message Queue Size",
+          "description": "Number of messages that are buffered between producer and consumer.",
+          "type": "long",
+          "default": 10000,
+          "min": 1
+        },
+        {
+          "name": "queue.byte.size",
+          "label": "Queue Size",
+          "description": "Maximum number of bytes that can be buffered between producer and consumer.",
+          "type": "long",
+          "default": 100000000,
+          "unit": "bytes"
+        },
+        {
+          "name": "jmx_port",
+          "label": "JMX Port",
+          "description": "Port for JMX.",
+          "type": "port",
+          "default": 29394
+        }
+      ]
+    },
+    {
+      "name": "CONFLUENT_KAFKA_CONNECT",
+      "label": "Confluent Kafka Connect",
+      "pluralLabel": "Confluent Kafka Connect/s",
+      "startRunner": {
+        "program": "scripts/confluent-kafka-connect.sh",
+        "args": [
+          "start"
+        ],
+        "environmentVariables": {
+          "NO_DATA_LOSS": "${no.data.loss}",
+          "WHITELIST": "${whitelist}",
+          "BLACKLIST": "${blacklist}",
+          "NUM_PRODUCERS": "${num.producers}",
+          "NUM_STREAMS": "${num.streams}",
+          "QUEUE_SIZE": "${queue.size}",
+          "QUEUE_BYTE_SIZE": "${queue.byte.size}",
+          "JMX_PORT": "${jmx_port}"
+        }
+      },
+      "logging": {
+        "dir": "/var/log/kafka",
+        "filename": "mirrormaker.log",
+        "modifiable": true,
+        "configName": "kafka_mirrormaker.log4j.dir",
+        "loggingType": "log4j"
+      },
+      "topology": {
+        "minInstances": "0"
+      },
+      "configWriter": {
+        "generators": [
+          {
+            "filename": "mirror_maker_producers.properties",
+            "configFormat": "properties",
+            "includedParams": [
+              "bootstrap.servers"
+            ]
+          },
+          {
+            "filename": "mirror_maker_consumers.properties",
+            "configFormat": "properties",
+            "includedParams": [
+              "group.id"
+            ]
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "name": "group.id",
+          "label": "Consumer Group ID",
+          "description": "Name of the consumer group used by MirrorMaker. When multiple role instances are configured with the same topics and same group ID, the role instances load-balance replication for the topics. When multiple role instances are configured with the same topics but different group ID, each role instance replicates all the events for those topics - this can be used to replicate the source cluster into multiple destination clusters.",
+          "type": "string",
+          "default": "cloudera_mirrormaker"
+        },
+        {
+          "name": "bootstrap.servers",
+          "label": "Destination Broker List",
+          "description": "List of brokers on destination cluster. This should be more than one, for high availability, but there's no need to list all brokers.",
+          "type": "string"
+        },
+        {
+          "name": "no.data.loss",
+          "label": "Avoid Data Loss",
+          "description": "Run with MirrorMaker settings that eliminate potential loss of data. This impacts performance, but is highly recommended.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "whitelist",
+          "label": "Topic Whitelist",
+          "description": "Regular expression that represents a set of topics to mirror. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "blacklist",
+          "label": "Topic Blacklist",
+          "description": "Regular expression that represents a set of topics to avoid mirroring. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "name": "num.producers",
+          "label": "Number of Producers",
+          "description": "Number of producer instances.",
+          "type": "long",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "num.streams",
+          "label": "Number of Consumer Threads",
+          "description": "Number of consumer threads.",
+          "type": "long",
+          "default": 1,
+          "min": 1
+        },
+        {
+          "name": "queue.size",
+          "label": "Message Queue Size",
+          "description": "Number of messages that are buffered between producer and consumer.",
+          "type": "long",
+          "default": 10000,
+          "min": 1
+        },
+        {
+          "name": "queue.byte.size",
+          "label": "Queue Size",
+          "description": "Maximum number of bytes that can be buffered between producer and consumer.",
+          "type": "long",
+          "default": 100000000,
+          "unit": "bytes"
+        },
+        {
+          "name": "jmx_port",
+          "label": "JMX Port",
+          "description": "Port for JMX.",
+          "type": "port",
+          "default": 29394
         }
       ]
     },

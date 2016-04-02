@@ -20,8 +20,8 @@
 # for debugging
 set -x
 
-CONFLUENT_ZOOKEEPER_HOME=/opt/confluent-2.0.1
-CONF_DIR=/opt/confluent-2.0.1/etc/kafka
+CONFLUENT_HOME=/opt/confluent-2.0.1
+CONF_DIR=/opt/confluent-2.0.1/etc
 
 # For better debugging
 echo ""
@@ -29,7 +29,7 @@ echo "Date: `date`"
 echo "Host: `hostname -f`"
 echo "Pwd: `pwd`"
 echo "CONF_DIR: $CONF_DIR"
-echo "KAFKA_HOME: $KAFKA_HOME"
+echo "CONFLUENT_HOME: $CONFLUENT_HOME"
 echo "Zoookeper Quorum: $ZK_QUORUM"
 echo "Chroot: $CHROOT"
 echo "JMX_PORT: $JMX_PORT"
@@ -71,4 +71,4 @@ echo "BROKER_HEAP_SIZE: ${BROKER_HEAP_SIZE}"
 #export KAFKA_JVM_PERFORMANCE_OPTS="${BROKER_JAVA_OPTS}"
 
 # And finally run Kafka itself
-#exec $KAFKA_HOME/bin/kafka-server-start $CONF_DIR/server.properties
+exec $KAFKA_HOME/bin/schema-registry-start $CONF_DIR/schema-registry/schema-registry.properties

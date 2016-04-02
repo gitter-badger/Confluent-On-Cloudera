@@ -12,7 +12,7 @@ To avoid overlapping with Cloudera's default ports the Confluent Platform uses t
 
 |       Service        | Confluent Platform |   JMX    | Http metric port |
 | :------------------: | ------------------:| --------:| ----------------:|
-| Zookeeper            |             22181  |          |                  |
+| Zookeeper            |             22181  |     9011 |                  |
 | Kafka Server         |             29092  |    29394 |            24043 | 
 | Schema Registry      |             28081  |          |                  |
 | Kafka-Rest port      |             28082  |          |                  |

@@ -2,19 +2,17 @@
 
 A collection of Custom Service Descriptors.
 
-### Requirements
+### Build
 
- * Maven 3 (to build)
-
-### Building
+__Requires:__  Maven 3
 
 ```bash
 $ mvn install
 ```
 
-The CSDs are generated under the /target/ folder of each module
+CSDs are small jars generated under the /target/ folder of each module
 
-## Installing
+## Install
 
 To install the generated CSDs copy them over into `/opt/cloudera/csd/` at the server with Cloudera Manager,
 set the ownership and restart the service:
@@ -36,7 +34,7 @@ Log-in and click on the top-right actions icon and `Add a Service`:
 Select the new option `Confluent Platform` and continue:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Landoop/CSD/master/images/SelectConfluentPlatform.png" width="800"/></a>
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/master/images/SelectConfluentPlatform.png" width="700"/></a>
 </p>
 
 
