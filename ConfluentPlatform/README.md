@@ -1,25 +1,3 @@
-A CSD ( Cloudera Service Descriptor ) for our favorite platform `Confluent Platform 2.0.1`
-
-When installing the `Confluent Platform` on a Cloudera managed Cluster - we avoid stepping on existing
-ports used by Cloudera's Kafka servers and zookeepers. 
-
-This CSD allows us to deploy in an isolated way Confluent Platform - and enables i.e. teams to maintain a set of 3 Cloudera Kafka servers - and 7 Confluent Kafka servers as two separate messaging systems.
-In effect this allows scaling / removing or running in parallel and even testing enabling kerberorization in Kafka.
-
-# Port mappings
-
-To avoid overlapping with Cloudera's default ports the Confluent Platform uses the following ports:
-
-|       Service        | Confluent Platform |   JMX    | Http metric port |
-| :------------------: | ------------------:| --------:| ----------------:|
-| Zookeeper            |             22181  |     9011 |                  |
-| Kafka Server         |             29092  |    29394 |            24043 | 
-| Schema Registry      |             28081  |    24044 |                  |
-| Kafka-Rest port      |             28082  |    24045 |                  |
-| Kafka Connect        |             28083  |          |                  |
-
-*_JMX + Http metric ports are the same as Cloudera's but bumped +1 or the next available_
-
 # UI 
 
 CSS custimisations

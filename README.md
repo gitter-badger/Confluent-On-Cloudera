@@ -73,6 +73,48 @@ The main new capabilities are:
 JXM is used for health-checks and a rich set of metrics are collected from the brokers.
 Logs are also available through Cloudera Manager
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/ConfluentLogs.png" width="700"/></a>
+</p>
+
+## Cluster isolation
+
+When installing the `Confluent Platform CSD` on a Cloudera managed Cluster - we avoid stepping on existing
+ports used by Cloudera's Kafka servers and zookeepers. 
+
+This CSD allows us to deploy in an isolated way Confluent Platform - and enables i.e. teams to maintain a set of 3 Cloudera Kafka servers - and 7 Confluent Kafka servers as two separate messaging systems.
+In effect this allows scaling / removing or running in parallel and even testing enabling kerberorization in Kafka.
+
+# Pre-requisites
+
+The CSD requires the Confluent Platform to be already installed in the cluster in the recommended locations:
+
+`/opt/confluent-2.0.1/`
+
+# Port mappings
+
+To avoid overlapping with Cloudera's default ports the Confluent Platform uses the following ports:
+
+|       Service        | Confluent Platform |   JMX    | Http metric port |
+| :------------------: | ------------------:| --------:| ----------------:|
+| Zookeeper            |             22181  |     9011 |                  |
+| Kafka Server         |             29092  |    29394 |            24043 | 
+| Schema Registry      |             28081  |    24044 |                  |
+| Kafka-Rest port      |             28082  |    24045 |                  |
+| Kafka Connect        |             28083  |          |                  |
+
+*_JMX + Http metric ports are the same as Cloudera's but bumped +1 or the next available_
+
+## TODO
+
+* Add more configuration settings and options to roles
+* Fetch `parcels` to avoid manual installation
+* Test test test
+
+## DISCLAIMER
+
+This CSD in _not yet_ a Cloudera Certified CSD.
+
+We will be applying for the `Cloudera Manager CSDs` Certification, but for now consider this as _experimental_
 
 [Apache-License](LICENSE.txt)
-
