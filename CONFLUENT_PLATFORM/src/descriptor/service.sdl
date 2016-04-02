@@ -597,7 +597,7 @@
           "label": "JMX Port",
           "description": "Port for JMX.",
           "type": "port",
-          "default": 29394
+          "default": 24045
         }
       ]
     },
@@ -721,7 +721,7 @@
           "label": "JMX Port",
           "description": "Port for JMX.",
           "type": "port",
-          "default": 29394
+          "default": 24044
         }
       ]
     },
@@ -845,7 +845,7 @@
           "label": "JMX Port",
           "description": "Port for JMX.",
           "type": "port",
-          "default": 29394
+          "default": 29398
         }
       ]
     },
@@ -969,7 +969,7 @@
           "label": "JMX Port",
           "description": "Port for JMX.",
           "type": "port",
-          "default": 29394
+          "default": 29399
         }
       ]
     }

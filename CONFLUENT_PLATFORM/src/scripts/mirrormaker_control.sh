@@ -2,7 +2,7 @@
 
 CONFLUENT_HOME=/opt/confluent-2.0.1
 
-# For better debugging
+# For debugging
 echo ""
 echo "Date: `date`"
 echo "Host: `hostname -f`"
