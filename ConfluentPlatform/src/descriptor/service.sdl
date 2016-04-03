@@ -56,44 +56,6 @@
       "softMax": 10
     },
     {
-      "name": "unclean.leader.election.enable",
-      "label": "Enable Unclean Leader Election",
-      "description": "Enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so might result in data loss.",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "name": "auto.leader.rebalance.enable",
-      "label": "Enable Automatic Leader Rebalancing",
-      "description": "If automatic leader rebalancing is enabled, the controller tries to balance leadership for partitions among the brokers by periodically returning leadership for each partition to the preferred replica, if it is available.",
-      "type": "boolean",
-      "default": true
-    },
-    {
-      "name": "leader.imbalance.per.broker.percentage",
-      "label": "Leader Imbalance Allowed Per Broker",
-      "description": "The percentage of leader imbalance allowed per broker. The controller rebalances leadership if this ratio goes above the configured value per broker.",
-      "type": "long",
-      "default": 10,
-      "min": 1,
-      "max": 100,
-      "softMin": 5,
-      "softMax": 50,
-      "unit": "percent"
-    },
-    {
-      "name": "leader.imbalance.check.interval.seconds",
-      "label": "Leader Imbalance Check Interval",
-      "description": "The frequency with which to check for leader imbalance.",
-      "type": "long",
-      "default": 300,
-      "min": 1,
-      "max": 2147483647,
-      "softMin": 30,
-      "softMax": 604800,
-      "unit": "seconds"
-    },
-    {
       "name": "zookeeper.session.timeout.ms",
       "label": "ZooKeeper Session Timeout",
       "description": "If the server fails to send a heartbeat to ZooKeeper within this period of time, it is considered dead. If set too low, ZooKeeper might falsely consider a server dead; if set too high, ZooKeeper might take too long to recognize a dead server.",
@@ -347,6 +309,44 @@
           "softMin": 2,
           "softMax": 10,
           "configurableInWizard": true
+        },
+        {
+          "name": "unclean.leader.election.enable",
+          "label": "Enable Unclean Leader Election",
+          "description": "Enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so might result in data loss.",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "auto.leader.rebalance.enable",
+          "label": "Enable Automatic Leader Rebalancing",
+          "description": "If automatic leader rebalancing is enabled, the controller tries to balance leadership for partitions among the brokers by periodically returning leadership for each partition to the preferred replica, if it is available.",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "leader.imbalance.per.broker.percentage",
+          "label": "Leader Imbalance Allowed Per Broker",
+          "description": "The percentage of leader imbalance allowed per broker. The controller rebalances leadership if this ratio goes above the configured value per broker.",
+          "type": "long",
+          "default": 10,
+          "min": 1,
+          "max": 100,
+          "softMin": 5,
+          "softMax": 50,
+          "unit": "percent"
+        },
+        {
+          "name": "leader.imbalance.check.interval.seconds",
+          "label": "Leader Imbalance Check Interval",
+          "description": "The frequency with which to check for leader imbalance.",
+          "type": "long",
+          "default": 300,
+          "min": 1,
+          "max": 2147483647,
+          "softMin": 30,
+          "softMax": 604800,
+          "unit": "seconds"
         },
         {
           "name": "delete.topic.enable",
