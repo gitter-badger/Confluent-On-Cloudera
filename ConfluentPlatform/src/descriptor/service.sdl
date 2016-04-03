@@ -554,24 +554,6 @@
       "topology": {
         "minInstances": "0"
       },
-      "configWriter": {
-        "generators": [
-          {
-            "filename": "mirror_maker_producers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "bootstrap.servers"
-            ]
-          },
-          {
-            "filename": "mirror_maker_consumers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "group.id"
-            ]
-          }
-        ]
-      },
       "parameters": [
         {
           "name": "group.id",
@@ -677,24 +659,6 @@
       },
       "topology": {
         "minInstances": "0"
-      },
-      "configWriter": {
-        "generators": [
-          {
-            "filename": "mirror_maker_producers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "bootstrap.servers"
-            ]
-          },
-          {
-            "filename": "mirror_maker_consumers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "group.id"
-            ]
-          }
-        ]
       },
       "parameters": [
         {
@@ -802,24 +766,6 @@
       "topology": {
         "minInstances": "0"
       },
-      "configWriter": {
-        "generators": [
-          {
-            "filename": "mirror_maker_producers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "bootstrap.servers"
-            ]
-          },
-          {
-            "filename": "mirror_maker_consumers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "group.id"
-            ]
-          }
-        ]
-      },
       "parameters": [
         {
           "name": "group.id",
@@ -925,24 +871,6 @@
       },
       "topology": {
         "minInstances": "0"
-      },
-      "configWriter": {
-        "generators": [
-          {
-            "filename": "mirror_maker_producers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "bootstrap.servers"
-            ]
-          },
-          {
-            "filename": "mirror_maker_consumers.properties",
-            "configFormat": "properties",
-            "includedParams": [
-              "group.id"
-            ]
-          }
-        ]
       },
       "parameters": [
         {
