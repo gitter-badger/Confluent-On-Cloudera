@@ -640,13 +640,6 @@
           "start"
         ],
         "environmentVariables": {
-          "NO_DATA_LOSS": "${no.data.loss}",
-          "WHITELIST": "${whitelist}",
-          "BLACKLIST": "${blacklist}",
-          "NUM_PRODUCERS": "${num.producers}",
-          "NUM_STREAMS": "${num.streams}",
-          "QUEUE_SIZE": "${queue.size}",
-          "QUEUE_BYTE_SIZE": "${queue.byte.size}",
           "JMX_PORT": "${jmx_port}"
         }
       },
@@ -661,72 +654,6 @@
         "minInstances": "0"
       },
       "parameters": [
-        {
-          "name": "group.id",
-          "label": "Consumer Group ID",
-          "description": "Name of the consumer group used by MirrorMaker. When multiple role instances are configured with the same topics and same group ID, the role instances load-balance replication for the topics. When multiple role instances are configured with the same topics but different group ID, each role instance replicates all the events for those topics - this can be used to replicate the source cluster into multiple destination clusters.",
-          "type": "string",
-          "default": "cloudera_mirrormaker"
-        },
-        {
-          "name": "bootstrap.servers",
-          "label": "Destination Broker List",
-          "description": "List of brokers on destination cluster. This should be more than one, for high availability, but there's no need to list all brokers.",
-          "type": "string"
-        },
-        {
-          "name": "no.data.loss",
-          "label": "Avoid Data Loss",
-          "description": "Run with MirrorMaker settings that eliminate potential loss of data. This impacts performance, but is highly recommended.",
-          "type": "boolean",
-          "default": true
-        },
-        {
-          "name": "whitelist",
-          "label": "Topic Whitelist",
-          "description": "Regular expression that represents a set of topics to mirror. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
-          "type": "string",
-          "default": ""
-        },
-        {
-          "name": "blacklist",
-          "label": "Topic Blacklist",
-          "description": "Regular expression that represents a set of topics to avoid mirroring. Note that whitelist and blacklist parameters are mutually exclusive. If both are defined, only the whilelist is used.",
-          "type": "string",
-          "default": ""
-        },
-        {
-          "name": "num.producers",
-          "label": "Number of Producers",
-          "description": "Number of producer instances.",
-          "type": "long",
-          "default": 1,
-          "min": 1
-        },
-        {
-          "name": "num.streams",
-          "label": "Number of Consumer Threads",
-          "description": "Number of consumer threads.",
-          "type": "long",
-          "default": 1,
-          "min": 1
-        },
-        {
-          "name": "queue.size",
-          "label": "Message Queue Size",
-          "description": "Number of messages that are buffered between producer and consumer.",
-          "type": "long",
-          "default": 10000,
-          "min": 1
-        },
-        {
-          "name": "queue.byte.size",
-          "label": "Queue Size",
-          "description": "Maximum number of bytes that can be buffered between producer and consumer.",
-          "type": "long",
-          "default": 100000000,
-          "unit": "bytes"
-        },
         {
           "name": "jmx_port",
           "label": "JMX Port",
