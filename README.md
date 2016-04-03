@@ -110,6 +110,7 @@ To avoid overlapping with Cloudera's default ports the Confluent Platform uses t
 * Add more configuration settings and options to roles
 * Fetch `parcels` to avoid manual installation
 * Support rolling restarts
+* Use logback instead of log4j
 * Test test test
 
 ## DISCLAIMER

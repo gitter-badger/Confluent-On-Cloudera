@@ -29,35 +29,6 @@
       "configurableInWizard": true
     },
     {
-      "name": "auto.create.topics.enable",
-      "label": "Topic Auto Creation",
-      "description": "Enables auto creation of topics on the server. If this is set to true, then attempts to produce, consume, or fetch metadata for a non-existent topic automatically create the topic with the default replication factor and number of partitions.",
-      "type": "boolean",
-      "default": "false",
-      "configurableInWizard": true
-    },
-    {
-      "name": "num.partitions",
-      "label": "Default Number of Partitions",
-      "description": "The default number of partitions for automatically created topics.",
-      "type": "long",
-      "default": 1,
-      "min": 1,
-      "max": 2147483647,
-      "softMax": 1000
-    },
-    {
-      "name": "default.replication.factor",
-      "label": "Default Replication Factor",
-      "description": "The default replication factor for automatically created topics.",
-      "type": "long",
-      "default": 1,
-      "min": 1,
-      "max": 2147483647,
-      "softMax": 10,
-      "configurableInWizard": true
-    },
-    {
       "name": "min.insync.replicas",
       "label": "Minimum Number of Replicas in ISR",
       "description": "The minimum number of replicas in the in-sync replica needed to satisfy a produce request where required.acks=-1 (that is, all).",
@@ -365,6 +336,35 @@
           "label": "Broker ID",
           "description": "ID uniquely identifying each broker. Never set this property at the group level; it should always be overridden on instance level.",
           "type": "string"
+        },
+        {
+          "name": "auto.create.topics.enable",
+          "label": "Topic Auto Creation",
+          "description": "Enables auto creation of topics on the server. If this is set to true, then attempts to produce, consume, or fetch metadata for a non-existent topic automatically create the topic with the default replication factor and number of partitions.",
+          "type": "boolean",
+          "default": "false",
+          "configurableInWizard": true
+        },
+        {
+          "name": "num.partitions",
+          "label": "Default Number of Partitions",
+          "description": "The default number of partitions for automatically created topics.",
+          "type": "long",
+          "default": 1,
+          "min": 1,
+          "max": 2147483647,
+          "softMax": 1000
+        },
+        {
+          "name": "default.replication.factor",
+          "label": "Default Replication Factor",
+          "description": "The default replication factor for automatically created topics.",
+          "type": "long",
+          "default": 1,
+          "min": 1,
+          "max": 2147483647,
+          "softMax": 10,
+          "configurableInWizard": true
         },
         {
           "name": "port",
