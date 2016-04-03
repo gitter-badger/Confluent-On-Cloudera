@@ -39,37 +39,6 @@
       "softMax": 10
     },
     {
-      "name": "offsets.topic.num.partitions",
-      "label": "Offset Commit Topic Number of Partitions",
-      "description": "The number of partitions for the offset commit topic. Since changing this after deployment is currently unsupported, we recommend using a higher setting for production (for example, 100-200).",
-      "type": "long",
-      "default": 50,
-      "min": 1,
-      "max": 2147483647,
-      "softMin": 25,
-      "softMax": 1000,
-      "configurableInWizard": true
-    },
-    {
-      "name": "offsets.topic.replication.factor",
-      "label": "Offset Commit Topic Replication Factor",
-      "description": "The replication factor for the offset commit topic. A higher setting is recommended in order to ensure higher availability (for example, 3 or 4) . If the offsets topic is created when there are fewer brokers than the replication factor, then the offsets topic is created with fewer replicas.",
-      "type": "long",
-      "default": 3,
-      "min": 1,
-      "max": 2147483647,
-      "softMin": 2,
-      "softMax": 10,
-      "configurableInWizard": true
-    },
-    {
-      "name": "delete.topic.enable",
-      "label": "Enable Delete Topic",
-      "description": "Enables topic deletion using admin tools. When delete topic is disabled, deleting topics through the admin tools has no effect.",
-      "type": "boolean",
-      "default": true
-    },
-    {
       "name": "controlled.shutdown.enable",
       "label": "Enable Controlled Shutdown",
       "description": "Enables controlled shutdown of the broker. If enabled, the broker moves all leaders on it to other brokers before shutting itself down. This reduces the unavailability window during shutdown.",
@@ -354,6 +323,37 @@
           "min": 1,
           "max": 2147483647,
           "softMax": 1000
+        },
+        {
+          "name": "offsets.topic.num.partitions",
+          "label": "Offset Commit Topic Number of Partitions",
+          "description": "The number of partitions for the offset commit topic. Since changing this after deployment is currently unsupported, we recommend using a higher setting for production (for example, 100-200).",
+          "type": "long",
+          "default": 50,
+          "min": 1,
+          "max": 2147483647,
+          "softMin": 25,
+          "softMax": 1000,
+          "configurableInWizard": true
+        },
+        {
+          "name": "offsets.topic.replication.factor",
+          "label": "Offset Commit Topic Replication Factor",
+          "description": "The replication factor for the offset commit topic. A higher setting is recommended in order to ensure higher availability (for example, 3 or 4) . If the offsets topic is created when there are fewer brokers than the replication factor, then the offsets topic is created with fewer replicas.",
+          "type": "long",
+          "default": 3,
+          "min": 1,
+          "max": 2147483647,
+          "softMin": 2,
+          "softMax": 10,
+          "configurableInWizard": true
+        },
+        {
+          "name": "delete.topic.enable",
+          "label": "Enable Delete Topic",
+          "description": "Enables topic deletion using admin tools. When delete topic is disabled, deleting topics through the admin tools has no effect.",
+          "type": "boolean",
+          "default": true
         },
         {
           "name": "default.replication.factor",
