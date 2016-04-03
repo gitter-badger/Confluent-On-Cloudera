@@ -29,16 +29,6 @@
       "configurableInWizard": true
     },
     {
-      "name": "min.insync.replicas",
-      "label": "Minimum Number of Replicas in ISR",
-      "description": "The minimum number of replicas in the in-sync replica needed to satisfy a produce request where required.acks=-1 (that is, all).",
-      "type": "long",
-      "default": 1,
-      "min": 1,
-      "max": 2147483647,
-      "softMax": 10
-    },
-    {
       "name": "controlled.shutdown.enable",
       "label": "Enable Controlled Shutdown",
       "description": "Enables controlled shutdown of the broker. If enabled, the broker moves all leaders on it to other brokers before shutting itself down. This reduces the unavailability window during shutdown.",
@@ -64,81 +54,6 @@
       "min": 1,
       "max": 2147483647,
       "softMax": 3600000,
-      "unit": "milliseconds"
-    },
-    {
-      "name": "message.max.bytes",
-      "label": "Maximum Message Size",
-      "description": "The maximum size of a message that the server can receive. It is important that this property be in sync with the maximum fetch size the consumers use, or else an unruly producer could publish messages too large for consumers to consume.",
-      "type": "long",
-      "default": 1000000,
-      "max": 2147483647,
-      "min": 1,
-      "softMin": 1024,
-      "softMax": 10485760,
-      "unit": "bytes"
-    },
-    {
-      "name": "replica.fetch.max.bytes",
-      "label": "Replica Maximum Fetch Size",
-      "description": "The maximum number of bytes to fetch for each partition in fetch requests replicas send to the leader. This value should be larger than message.max.bytes.",
-      "type": "long",
-      "default": 1048576,
-      "min": 1,
-      "max": 2147483647,
-      "softMin": 1024,
-      "softMax": 1073741824,
-      "unit": "bytes"
-    },
-    {
-      "name": "num.replica.fetchers",
-      "label": "Number of Replica Fetchers",
-      "description": "Number of threads used to replicate messages from leaders. Increasing this value increases the degree of I/O parallelism in the follower broker.",
-      "type": "long",
-      "default": 1,
-      "min": 1,
-      "max": 2147483647,
-      "softMax": 100
-    },
-    {
-      "name": "replica.lag.max.messages",
-      "label": "Allowed Replica Message Lag",
-      "description": "If a replica falls more than this number of messages behind the leader, the leader removes the follower from the ISR and treats it as dead. This property is deprecated in Kafka 1.4.0; higher versions use only replica.lag.time.max.ms.",
-      "type": "long",
-      "default": 4000,
-      "min": 1,
-      "max": 2147483647
-    },
-    {
-      "name": "replica.lag.time.max.ms",
-      "label": "Allowed Replica Time Lag",
-      "description": "If a follower has not sent any fetch requests, nor has it consumed up to the leader's log end offset during this time, the leader removes the follower from the ISR set.",
-      "type": "long",
-      "default": 10000,
-      "min": 1,
-      "unit": "milliseconds"
-    },
-    {
-      "name": "log.flush.interval.messages",
-      "label": "Log Flush Message Interval",
-      "description": "The number of messages written to a log partition before triggering an fsync on the log. Setting this lower syncs data to disk more often, but has a major impact on performance. We recommend use of replication for durability rather than depending on single-server fsync; however, this setting can be used to be extra certain. If used in conjunction with log.flush.interval.ms, the log is flushed when either criteria is met.",
-      "type": "long",
-      "min": 1
-    },
-    {
-      "name": "log.flush.interval.ms",
-      "label": "Log Flush Time Interval",
-      "description": "The maximum time between fsync calls on the log. If used in conjuction with log.flush.interval.messages, the log is flushed when either criteria is met.",
-      "type": "long",
-      "min": 1,
-      "unit": "milliseconds"
-    },
-    {
-      "name": "log.flush.scheduler.interval.ms",
-      "label": "Log Flush Scheduler Interval",
-      "description": "The frequency, in ms, with which the log flusher checks whether any log is eligible to be flushed to disk.",
-      "type": "long",
-      "min": 1,
       "unit": "milliseconds"
     },
     {
@@ -285,6 +200,16 @@
           "min": 1,
           "max": 2147483647,
           "softMax": 1000
+        },
+        {
+          "name": "min.insync.replicas",
+          "label": "Minimum Number of Replicas in ISR",
+          "description": "The minimum number of replicas in the in-sync replica needed to satisfy a produce request where required.acks=-1 (that is, all).",
+          "type": "long",
+          "default": 1,
+          "min": 1,
+          "max": 2147483647,
+          "softMax": 10
         },
         {
           "name": "offsets.topic.num.partitions",
@@ -495,6 +420,81 @@
           "description": "Host the HTTP metric reporter binds to.",
           "type": "string",
           "default": "0.0.0.0"
+        },
+        {
+          "name": "message.max.bytes",
+          "label": "Maximum Message Size",
+          "description": "The maximum size of a message that the server can receive. It is important that this property be in sync with the maximum fetch size the consumers use, or else an unruly producer could publish messages too large for consumers to consume.",
+          "type": "long",
+          "default": 1000000,
+          "max": 2147483647,
+          "min": 1,
+          "softMin": 1024,
+          "softMax": 10485760,
+          "unit": "bytes"
+        },
+        {
+          "name": "replica.fetch.max.bytes",
+          "label": "Replica Maximum Fetch Size",
+          "description": "The maximum number of bytes to fetch for each partition in fetch requests replicas send to the leader. This value should be larger than message.max.bytes.",
+          "type": "long",
+          "default": 1048576,
+          "min": 1,
+          "max": 2147483647,
+          "softMin": 1024,
+          "softMax": 1073741824,
+          "unit": "bytes"
+        },
+        {
+          "name": "num.replica.fetchers",
+          "label": "Number of Replica Fetchers",
+          "description": "Number of threads used to replicate messages from leaders. Increasing this value increases the degree of I/O parallelism in the follower broker.",
+          "type": "long",
+          "default": 1,
+          "min": 1,
+          "max": 2147483647,
+          "softMax": 100
+        },
+        {
+          "name": "replica.lag.max.messages",
+          "label": "Allowed Replica Message Lag",
+          "description": "If a replica falls more than this number of messages behind the leader, the leader removes the follower from the ISR and treats it as dead. This property is deprecated in Kafka 1.4.0; higher versions use only replica.lag.time.max.ms.",
+          "type": "long",
+          "default": 4000,
+          "min": 1,
+          "max": 2147483647
+        },
+        {
+          "name": "replica.lag.time.max.ms",
+          "label": "Allowed Replica Time Lag",
+          "description": "If a follower has not sent any fetch requests, nor has it consumed up to the leader's log end offset during this time, the leader removes the follower from the ISR set.",
+          "type": "long",
+          "default": 10000,
+          "min": 1,
+          "unit": "milliseconds"
+        },
+        {
+          "name": "log.flush.interval.messages",
+          "label": "Log Flush Message Interval",
+          "description": "The number of messages written to a log partition before triggering an fsync on the log. Setting this lower syncs data to disk more often, but has a major impact on performance. We recommend use of replication for durability rather than depending on single-server fsync; however, this setting can be used to be extra certain. If used in conjunction with log.flush.interval.ms, the log is flushed when either criteria is met.",
+          "type": "long",
+          "min": 1
+        },
+        {
+          "name": "log.flush.interval.ms",
+          "label": "Log Flush Time Interval",
+          "description": "The maximum time between fsync calls on the log. If used in conjuction with log.flush.interval.messages, the log is flushed when either criteria is met.",
+          "type": "long",
+          "min": 1,
+          "unit": "milliseconds"
+        },
+        {
+          "name": "log.flush.scheduler.interval.ms",
+          "label": "Log Flush Scheduler Interval",
+          "description": "The frequency, in ms, with which the log flusher checks whether any log is eligible to be flushed to disk.",
+          "type": "long",
+          "min": 1,
+          "unit": "milliseconds"
         },
         {
           "name": "kafka.http.metrics.port",
