@@ -1,4 +1,4 @@
-# CSDs for Cloudera Manager 
+# CSDs for Cloudera Manager
 
 A collection of Custom Service Descriptors
 
@@ -10,18 +10,20 @@ $ mvn install
 
 CSDs are small jars generated under the /target/ folder of each module
 
+If you prefer precompiled jars, please visit our [releases page](https://github.com/Landoop/CSD/releases).
+
 ## Install
 
 To install the generated CSDs copy them over into `/opt/cloudera/csd/` at the server with Cloudera Manager,
 set the ownership and restart the service:
 
 ```bash
-chown cloudera-scm.cloudera-scm /opt/cloudera/csd/*
+chown cloudera-scm:cloudera-scm /opt/cloudera/csd/*
 service cloudera-scm-server restart
 ```
 
 Stay happy knowing that this is a quick and easy operation that usually requires 3 to 4 seconds.
-We are not stopping anything on cluster or monitoring, just reloading a web app here. 
+We are not stopping anything on cluster or monitoring, just reloading a web app here.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/confluent.png" width="260"/></a>
@@ -45,7 +47,7 @@ In the following image you need to select the `hosts` where each of the service 
   <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/SelectRolesAndHosts.png" width="700"/></a>
 </p>
 
-And then we go through a configuration/settings page where we can review the port numbers and other setting related to our 
+And then we go through a configuration/settings page where we can review the port numbers and other setting related to our
 new services
 
 Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Manager
@@ -61,7 +63,7 @@ The main new capabilities are:
 * Start and stop services from CM ( with auditing )
 * Manage deployments ( scale up and down )
 * Monitoring / Health checks
-* Reporting and performance metrics 
+* Reporting and performance metrics
 * Easy Access to log files
 
 ---
@@ -80,7 +82,7 @@ Logs are also available through Cloudera Manager
 ## Cluster isolation
 
 When installing the `Confluent Platform CSD` on a Cloudera managed Cluster - we avoid stepping on existing
-ports used by Cloudera's Kafka servers and zookeepers. 
+ports used by Cloudera's Kafka servers and zookeepers.
 
 This CSD allows us to deploy in an isolated way Confluent Platform - and enables i.e. teams to maintain a set of 3 Cloudera Kafka servers - and 7 Confluent Kafka servers as two separate messaging systems.
 In effect this allows scaling / removing or running in parallel and even testing enabling kerberorization in Kafka.
@@ -98,7 +100,7 @@ To avoid overlapping with Cloudera's default ports the Confluent Platform uses t
 |       Service        | Confluent Platform |   JMX    | Http metric port |
 | :------------------: | ------------------:| --------:| ----------------:|
 | Zookeeper            |             22181  |     9011 |                  |
-| Kafka Server         |             29092  |    29394 |            24043 | 
+| Kafka Server         |             29092  |    29394 |            24043 |
 | Schema Registry      |             28081  |    24044 |                  |
 | Kafka-Rest proxy     |             28082  |    24045 |                  |
 | Kafka Connect        |             28083  |          |                  |
