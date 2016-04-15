@@ -2,6 +2,31 @@
 
 A collection of Custom Service Descriptors
 
+## Quick Install for Confluent Platform
+
+Install Confluent Platform.
+
+```bash
+$ wget "http://packages.confluent.io/archive/2.0/confluent-2.0.1-2.11.7.tar.gz" -O confluent-2.0.1-2.11.7.tar.gz
+$ sudo tar xf confluent-2.0.1-2.11.7.tar.gz -C /opt/
+$ sudo useradd --system --no-create-home confluent
+$ rm confluent-2.0.1-2.11.7.tar.gz
+```
+
+Inside your Cloudera main server download the CSD you are interested in, give it proper permissions and restart the Cloudera Manager service.
+Please note that the actual command to restart the Cloudera Manager service may vary dependending on your OS.
+
+```bash
+$ sudo mkdir -p /opt/cloudera/csd
+$ sudo wget "https://github.com/Landoop/CSD/releases/download/0.1/Confluent-Platform-2.0.1.jar" -O /opt/cloudera/csd/Confluent-Platform-2.0.1.jar
+$ sudo chown -R cloudera-scm:cloudera-scm /opt/cloudera/csd
+$ sudo systemctl restart cloudera-scm-server
+```
+
+Now you may proceed to add a service to your cluster. Confluent Platform will be there.
+
+# Build
+
 __Build requires:__  Maven 3
 
 ```bash
