@@ -4,70 +4,34 @@ Fast Data applications require a distributed messaging system like `Apache Kafka
 
 If you already run a Big Data platform (based on Cloudera), you can use **Confluent-On-Cloudera** to make easier the installation, configuration and monitoring of your infrastructure.
 
-> It gives you a 10,000 feet view of your entire Big Data and Fast data infrastructure 
+> Gives you a 10,000 feet view of your entire Big Data and Fast data infrastructure 
 
 ### Features
 
-* Deployment of the Confluent Platform on a Cloudera cluster
-* Installation automation
-* Configuration management
-* Logs and monitoring
-* Health checks and alerts
+* Confluent Platform Installation automation
+* Start and stop services from CM ( with auditing )
+* Manage deployments ( scale up and down )
+* Monitoring / Health checks
+* Reporting and performance metrics
+* Easy Access to log files
 
 ## Preview
 
 <img src="https://raw.githubusercontent.com/Landoop/Confluent-On-Cloudera/gh-pages/ConfluentOnCloudera.gif">
 
-## Support
+## Quick Install
 
-
-## Quick Install for Confluent Platform
-
-Install Confluent Platform.
-
-```bash
-$ wget "http://packages.confluent.io/archive/2.0/confluent-2.0.1-2.11.7.tar.gz" -O confluent-2.0.1-2.11.7.tar.gz
-$ sudo tar xf confluent-2.0.1-2.11.7.tar.gz -C /opt/
-$ sudo useradd --system --no-create-home confluent
-$ rm confluent-2.0.1-2.11.7.tar.gz
-```
-
-Inside your Cloudera main server download the CSD you are interested in, give it proper permissions and restart the Cloudera Manager service.
-Please note that the actual command to restart the Cloudera Manager service may vary dependending on your OS.
+To install the Confluent-On-Cloudera CSD copy the 45KByte file into location `/opt/cloudera/csd/` at the server with Cloudera Manager,
+set the ownership and restart the service:
 
 ```bash
 $ sudo mkdir -p /opt/cloudera/csd
-$ sudo wget "https://github.com/Landoop/CSD/releases/download/0.1/Confluent-Platform-2.0.1.jar" -O /opt/cloudera/csd/Confluent-Platform-2.0.1.jar
+$ sudo wget "https://archive.landoop.com/cdh5/csd/Confluent-Platform-2.0.1-0.jar" -O /opt/cloudera/csd/Confluent-Platform-2.0.1-0.jar
 $ sudo chown -R cloudera-scm:cloudera-scm /opt/cloudera/csd
 $ sudo systemctl restart cloudera-scm-server
 ```
 
-Now you may proceed to add a service to your cluster. Confluent Platform will be there.
-
-# Build
-
-__Build requires:__  Maven 3
-
-```bash
-$ mvn install
-```
-
-CSDs are small jars generated under the /target/ folder of each module
-
-If you prefer precompiled jars, please visit our [releases page](https://github.com/Landoop/CSD/releases).
-
-## Install
-
-To install the generated CSDs copy them over into `/opt/cloudera/csd/` at the server with Cloudera Manager,
-set the ownership and restart the service:
-
-```bash
-chown cloudera-scm:cloudera-scm /opt/cloudera/csd/*
-service cloudera-scm-server restart
-```
-
-Stay happy knowing that this is a quick and easy operation that usually requires 3 to 4 seconds.
-We are not stopping anything on cluster or monitoring, just reloading a web app here.
+Using **Cloudera Manager** you can proceed with deployment and installation. [Learn more information here]()
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/confluent.png" width="260"/></a>
@@ -102,15 +66,12 @@ Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Mana
 
 ---
 
-The main new capabilities are:
-
-* Start and stop services from CM ( with auditing )
-* Manage deployments ( scale up and down )
-* Monitoring / Health checks
-* Reporting and performance metrics
-* Easy Access to log files
 
 ---
+## Support
+
+
+
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/AllConfluentServices.png" width="300"/></a>
@@ -141,15 +102,13 @@ The CSD requires the Confluent Platform to be already installed in the cluster i
 
 To avoid overlapping with Cloudera's default ports the Confluent Platform uses the following ports:
 
-|       Service        | Confluent Platform |   JMX    | Http metric port |
-| :------------------: | ------------------:| --------:| ----------------:|
-| Zookeeper            |             22181  |     9011 |                  |
-| Kafka Server         |             29092  |    29394 |            24043 |
-| Schema Registry      |             28081  |    24044 |                  |
-| Kafka-Rest proxy     |             28082  |    24045 |                  |
-| Kafka Connect        |             28083  |          |                  |
-
-*_JMX + Http metric ports are the same as Cloudera's but bumped +1 or the next available_
+|       Service        | Port              |
+| :------------------: | -----------------:|
+| Zookeeper            |             2181  |
+| Kafka Server         |             9092  |
+| Schema Registry      |             8081  |
+| Kafka-Rest proxy     |             8082  |
+| Kafka Connect        |             8083  |
 
 ## TODO
 
