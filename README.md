@@ -39,7 +39,7 @@ Then select the `hosts` where each of the service will be installed, and go thro
 
 Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Manager
 
-> [Access the entire Confluent-On-Cloudera documentation here](https://docs.landoop.com/pages/confluent-csd/install.html)
+> [Access the entire Confluent-On-Cloudera documentation here](https://docs.landoop.com/confluent-csd/latest/install/)
 
 ## Support
 
