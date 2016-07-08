@@ -13,7 +13,7 @@ Fast Data applications require a distributed messaging system like `Apache Kafka
 * Reporting and performance metrics
 * Easy Access to log files
 
-## Preview
+## Preview installation
 
 <img src="https://raw.githubusercontent.com/Landoop/Confluent-On-Cloudera/gh-pages/ConfluentOnCloudera.gif">
 
@@ -40,20 +40,6 @@ Select the new option `Confluent Platform` and continue:
 
 Then select the `hosts` where each of the service will be installed, and go through a configuration/settings page where we can review the port numbers and other setting related to our new services
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Landoop/CSD/gh-pages/imgs/success.png" width="400"/></a>
-</p>
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Landoop/Confluent-On-Cloudera/gh-pages/imgs/3.png" width="400"/></a>
-</p>
-
-Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Manager
-
-> [Access the entire Confluent-On-Cloudera documentation here](https://docs.landoop.com/pages/confluent-csd/install.html)
-
-# Ports
-
 |       Service        | Port              |
 | :------------------  | :----------------:|
 | Kafka Server         |             9092  |
@@ -64,3 +50,10 @@ Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Mana
 
 ¹ Zookeeper is chrooted at `2181/confluent` 
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Landoop/Confluent-On-Cloudera/gh-pages/imgs/3.png" width="400"/></a>
+</p>
+
+Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Manager
+
+> [Access the entire Confluent-On-Cloudera documentation here](https://docs.landoop.com/pages/confluent-csd/install.html)
