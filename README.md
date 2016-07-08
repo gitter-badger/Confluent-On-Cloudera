@@ -1,6 +1,25 @@
-# CSDs for Cloudera Manager
+# Confluent-On-Cloudera
 
-A collection of Custom Service Descriptors
+Fast Data applications require a distributed messaging system like `Apache Kafka`. The [Confluent Platform](http://www.confluent.io/product) provides excellent tools for building stream processing applications.
+
+If you already run a Big Data platform (based on Cloudera), you can use **Confluent-On-Cloudera** to make easier the installation, configuration and monitoring of your infrastructure.
+
+> It gives you a 10,000 feet view of your entire Big Data and Fast data infrastructure 
+
+### Features
+
+* Deployment of the Confluent Platform on a Cloudera cluster
+* Installation automation
+* Configuration management
+* Logs and monitoring
+* Health checks and alerts
+
+## Preview
+
+<img src="https://raw.githubusercontent.com/Landoop/Confluent-On-Cloudera/gh-pages/ConfluentOnCloudera.gif">
+
+## Support
+
 
 ## Quick Install for Confluent Platform
 
