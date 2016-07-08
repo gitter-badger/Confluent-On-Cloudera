@@ -1,5 +1,7 @@
 # Confluent-On-Cloudera
 
+[![Join the chat at https://gitter.im/Landoop/Confluent-On-Cloudera](https://badges.gitter.im/Landoop/Confluent-On-Cloudera.svg)](https://gitter.im/Landoop/Confluent-On-Cloudera?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Fast Data applications require a distributed messaging system like `Apache Kafka`. The [Confluent Platform](http://www.confluent.io/product) provides excellent tools for building stream processing applications. If you already run a Big Data platform (based on Cloudera), you can use **Confluent-On-Cloudera** to make easier the installation, configuration and monitoring of your infrastructure.
 
 > Gives you a 10,000 feet view of your entire Big Data and Fast data infrastructure 
