@@ -52,7 +52,7 @@ Then select the `hosts` where each of the service will be installed, and go thro
 
 Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Manager
 
-[Access the entire Confluent-On-Cloudera documentation here](https://docs.landoop.com/pages/confluent-csd/install.html)
+> [Access the entire Confluent-On-Cloudera documentation here](https://docs.landoop.com/pages/confluent-csd/install.html)
 
 # Ports
 
@@ -60,16 +60,11 @@ To avoid overlapping with Cloudera's default ports the Confluent Platform uses t
 
 |       Service        | Port              |
 | :------------------: | -----------------:|
-| Zookeeper            |             2181  |
 | Kafka Server         |             9092  |
 | Schema Registry      |             8081  |
 | Kafka-Rest proxy     |             8082  |
-| Kafka Connect        |             8083  |
+| Kafka Connect        |             8085  |
+| Zookeeper            |             2181 ¹|
 
-## DISCLAIMER
+¹ Zookeeper is chrooted at `2181/confluent` 
 
-This CSD in _not yet_ a Cloudera Certified CSD.
-
-We will be applying for the `Cloudera Manager CSDs` Certification, but for now consider this as _experimental_
-
-[Apache-License](LICENSE.txt)
