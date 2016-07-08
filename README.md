@@ -54,10 +54,8 @@ Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Mana
 
 # Ports
 
-To avoid overlapping with Cloudera's default ports the Confluent Platform uses the following ports:
-
 |       Service        | Port              |
-| :------------------: | -----------------:|
+| :------------------  | :----------------:|
 | Kafka Server         |             9092  |
 | Schema Registry      |             8081  |
 | Kafka-Rest proxy     |             8082  |
