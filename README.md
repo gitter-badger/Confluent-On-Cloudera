@@ -17,13 +17,6 @@ Fast Data applications require a distributed messaging system like `Apache Kafka
 
 <img src="https://raw.githubusercontent.com/Landoop/Confluent-On-Cloudera/gh-pages/ConfluentOnCloudera.gif">
 
-## Support
-
-* Confluent Platform 2.0.1
-* Cloudera Manager > 5.4
-
-Contact us at [Landoop](http://www.landoop.com/contact-us/) for enterprise support   
-
 ## Quick Install
 
 It looks like this: Log-in to Cloudera Manager and click on the top-right actions icon and `Add a Service`:
@@ -57,3 +50,10 @@ Then select the `hosts` where each of the service will be installed, and go thro
 Success :-) we have the `Confluent Platform 2.0.1` managed through Cloudera Manager
 
 > [Access the entire Confluent-On-Cloudera documentation here](https://docs.landoop.com/pages/confluent-csd/install.html)
+
+## Support
+
+* Confluent Platform 2.0.1
+* Cloudera Manager > 5.4
+
+Contact us at [Landoop](http://www.landoop.com/contact-us/) for enterprise support   
