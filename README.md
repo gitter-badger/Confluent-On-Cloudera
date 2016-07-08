@@ -22,7 +22,7 @@ Fast Data applications require a distributed messaging system like `Apache Kafka
 * Confluent Platform 2.0.1
 * Cloudera Manager > 5.4
 
-Contact us at [Landoop](http://www.landoop.com/contact-us/) for support   
+Contact us at [Landoop](http://www.landoop.com/contact-us/) for enterprise support   
 
 ## Quick Install
 
