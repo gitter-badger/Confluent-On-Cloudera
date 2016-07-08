@@ -33,16 +33,6 @@ Select the new option `Confluent Platform` and continue:
 
 Then select the `hosts` where each of the service will be installed, and go through a configuration/settings page where we can review the port numbers and other setting related to our new services
 
-|       Service        | Port              |
-| :------------------  | :----------------:|
-| Kafka Server         |             9092  |
-| Schema Registry      |             8081  |
-| Kafka-Rest proxy     |             8082  |
-| Kafka Connect        |             8085  |
-| Zookeeper            |             2181 ¹|
-
-¹ Zookeeper is chrooted at `2181/confluent` 
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/Landoop/Confluent-On-Cloudera/gh-pages/imgs/3.png" width="400"/></a>
 </p>
